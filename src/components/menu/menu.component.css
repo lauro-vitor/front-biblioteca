@@ -1,0 +1,9 @@
+.card {
+    min-width: 400px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.center {
+    margin: 0 auto;
+}
