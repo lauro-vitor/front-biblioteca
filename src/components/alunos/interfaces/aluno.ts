@@ -1,10 +1,10 @@
 interface Aluno {
-    idAluno: string;
+    idAluno?: string;
     nome: string; 
     matricula: string;
     dataNascimento: string;
     sexo: string;
-    desativado: boolean;
+    desativado?: boolean;
 };
 
 export {Aluno};

@@ -1,14 +1,18 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AlunoService } from '../aluno.service';
 import { Aluno } from '../interfaces/aluno';
 import { Pagination } from '../../../model/Pagination';
-import { Subscription } from 'rxjs';
+
 import { AlunoParametro } from '../interfaces/aluno-parametro';
+import { Router } from '@angular/router';
 
 
 
@@ -19,17 +23,18 @@ import { AlunoParametro } from '../interfaces/aluno-parametro';
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule
   ],
   templateUrl: './aluno-listar.component.html',
   styleUrl: './aluno-listar.component.css'
 })
-export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy  {
+export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private alunoParametro?: AlunoParametro;
 
-  private obterAlunosSubscription?:  Subscription
-  
+  private obterAlunosSubscription?: Subscription
+
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   @ViewChild(MatSort) sort?: MatSort;
@@ -42,8 +47,8 @@ export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy  {
   public totalCount?: number;
   public pageSize?: number;
 
-  constructor(private alunoService: AlunoService) { }
-  
+  constructor(private alunoService: AlunoService, private router: Router) { }
+
 
   ngOnInit(): void {
     this.obterAlunos();
@@ -58,7 +63,7 @@ export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   ngOnDestroy(): void {
-      this.obterAlunosSubscription?.unsubscribe();
+    this.obterAlunosSubscription?.unsubscribe();
   }
 
   public handlePageEvent(event: PageEvent) {
@@ -73,7 +78,7 @@ export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   private obterAlunos(): void {
 
-   this.obterAlunosSubscription = this.alunoService.obter().subscribe({
+    this.obterAlunosSubscription = this.alunoService.obter().subscribe({
       next: (response: Pagination<Aluno[]>) => {
         this.pageIndex = response.pageIndex;
         this.pageSize = response.pageSize;
@@ -84,5 +89,9 @@ export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy  {
         console.error(err);
       }
     });
+  }
+
+  public inserirButtonClick(): void {
+    this.router.navigate(['/aluno-cadastro']);
   }
 }

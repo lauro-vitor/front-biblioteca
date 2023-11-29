@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="header">
+        <h1>Cadastro de Alunos</h1>
+        <div>
+            <button mat-raised-button color="accent" (click)="submit()">Salvar</button>
+        </div>
+    </div>
+
+    <form [formGroup]="alunoForm">
+        <div class="row">
+            <mat-form-field class="col-100">
+                <mat-label>Nome</mat-label>
+                <input formControlName="nome" type="text" matInput />
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="col-50">
+                <mat-label>Matrícula</mat-label>
+                <input formControlName="matricula" type="text" matInput />
+            </mat-form-field>
+
+            <mat-form-field class="col-50">
+                <mat-label>Data de Nascimento</mat-label>
+                <input  formControlName="dataNascimento" matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="col-50">
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="sexo">
+                    <mat-option value="0">(Selecione o sexo)</mat-option>
+                    <mat-option value="1"> Masculino </mat-option>
+                    <mat-option value="2"> Feminino</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
