@@ -39,7 +39,7 @@ export class AlunoListarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatSort) sort?: MatSort;
 
-  public displayedColumns: string[] = ["nome", "matricula", "sexo", "habilitado"];
+  public displayedColumns: string[] = ["nome", "matricula", "dataNascimento", "sexo", "habilitado"];
 
   public dataSource: MatTableDataSource<Aluno> = new MatTableDataSource<Aluno>();;
 

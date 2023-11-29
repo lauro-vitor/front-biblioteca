@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("./assets/css/loder.css");
+@import url("./assets/css/buttons.css");
 
 html,
 body {
@@ -21,6 +23,7 @@ body {
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -40,4 +43,8 @@ body {
 
 .col-30 {
     width: 33.33%;
+}
+
+.mt-4 {
+    margin-top: 4em;
 }

@@ -2,7 +2,7 @@
     <div class="header">
         <h1>Cadastro de Alunos</h1>
         <div>
-            <button mat-raised-button color="accent" (click)="submit()">Salvar</button>
+            <button class="button button-save" (click)="submit()">Salvar</button>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
 
             <mat-form-field class="col-50">
                 <mat-label>Data de Nascimento</mat-label>
-                <input  formControlName="dataNascimento" matInput [matDatepicker]="picker" />
+                <input formControlName="dataNascimento" matInput [matDatepicker]="picker" />
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -32,11 +32,24 @@
             <mat-form-field class="col-50">
                 <mat-label>Sexo</mat-label>
                 <mat-select formControlName="sexo">
-                    <mat-option value="0">(Selecione o sexo)</mat-option>
+                    <mat-option value="-1">(Selecione o sexo)</mat-option>
+                    <mat-option value="0"> Feminino</mat-option>
                     <mat-option value="1"> Masculino </mat-option>
-                    <mat-option value="2"> Feminino</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
+    </form>
+
+    <div class="header mt-4">
+        <h1>Contatos</h1>
+        <div>
+            <button class="button button-delete">Excluir</button>
+            <button class="button button-update">Editar</button>
+            <button class="button button-insert">Inserir</button>
+        </div>
+    </div>
+
+    <form>
+
     </form>
 </div>

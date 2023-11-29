@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "../components/navbar/navbar.component";
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,8 @@ import { NavbarComponent } from "../components/navbar/navbar.component";
   imports: [
     CommonModule,
     RouterOutlet,
-    NavbarComponent]
+    NavbarComponent,
+    MatProgressSpinnerModule]
 })
 export class AppComponent {
   title = 'front-biblioteca';
