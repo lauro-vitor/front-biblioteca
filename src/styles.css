@@ -32,6 +32,10 @@ body {
     justify-content: space-between;
 }
 
+.tr-selected{
+    background-color: #ddd !important;
+}
+
 .col-100 {
     width: 100%;
 }

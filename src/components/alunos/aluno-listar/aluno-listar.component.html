@@ -1,10 +1,28 @@
 <div class="container">
     <div class="header">
         <h1>Alunos</h1>
-        <button mat-raised-button color="primary" (click)="inserirButtonClick()">Inserir</button>
+        <div>
+            <button class="button button-delete" [disabled]="idAlunoSelecionado == null">Excluir</button>
+            <button class="button button-update" [disabled]="idAlunoSelecionado == null" >Editar</button>
+            <button class="button button-insert"  (click)="inserirButtonClick()">Inserir</button>
+        </div>
     </div>
 
     <table mat-table matSort [dataSource]="dataSource" (matSortChange)="sortChange($event)">
+        <ng-container matColumnDef="#">
+            <th mat-header-cell *matHeaderCellDef>
+                #
+            </th>
+
+            <td mat-cell *matCellDef="let element">
+                <input type="radio" 
+                    name="alunoSelecionado" 
+                    value="{{element.idAluno}}" 
+                    style="cursor: pointer;"
+                    (click)="selecionarAlunoInputClick(element.idAluno)" />
+            </td>
+
+        </ng-container>
 
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">
@@ -57,7 +75,10 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-row 
+            *matRowDef="let row; columns: displayedColumns" 
+            [ngClass]="(idAlunoSelecionado == row.idAluno)  ? 'tr-selected' : '' ">
+        </tr>
     </table>
 
     <mat-paginator (page)="handlePageEvent($event)" [length]="totalCount" [pageSize]="pageSize" [pageIndex]="pageIndex"
